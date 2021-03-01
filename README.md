@@ -1,24 +1,24 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## categories テーブル
 
-Things you may want to cover:
+| Column | Type   | Options                   |
+| ------ | ------ | ------------------------- |
+| id     | bigint | primary_key: true         |
+| name   | string | null: false, unique: true |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :ideas
 
-* Configuration
+## ideas テーブル
 
-* Database creation
+| Column      | Type   | Options                        |
+|------------ | ------ | ------------------------------ |
+| id          | bigint | primary_key: true              |
+| category_id | bigint | null: false, foreign_key: true |
+| body        | text   | null: false                    |
 
-* Database initialization
+### Association
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- belongs_to :category
